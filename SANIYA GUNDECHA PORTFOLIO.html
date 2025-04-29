@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saniya Gundecha - AI & Data Science Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --light-text: #f5f5f5;
+            --background: #f8f9fa;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            color: var(--light-text);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav-item {
+            margin: 0 1rem;
+        }
+
+        .nav-link {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-link:hover {
+            background-color: var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-text {
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-item {
+                margin: 0.5rem 0;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Icons styling */
+        .icon-with-text {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-category {
+            margin-top: 2rem;
+        }
+
+        .project-category-title {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .blog-card {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .blog-img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .blog-content {
+            flex: 1;
+        }
+
+        .blog-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .blog-card {
+                flex-direction: column;
+            }
+            
+            .blog-img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="https://i.ibb.co/BVs9x9hk/saniya.jpg" alt="Saniya Gundecha" class="profile-img">
+            <h1>Saniya Sachin Gundecha</h1>
+            <p class="tagline">AI & Data Science Engineer | Machine Learning Enthusiast</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:gundechasaniya07@gmail.com">gundechasaniya07@gmail.com</a>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/saniya-gundecha-421012229" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Learn-07ssg" target="_blank" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="nav-list container">
+            <li class="nav-item"><a href="#about" class="nav-link active">About</a></li>
+            <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+            <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+            <li class="nav-item"><a href="#internships" class="nav-link">Internships</a></li>
+            <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <p>I'm a passionate AI and Data Science professional with expertise in machine learning, deep learning, and data analysis. My journey in technology began with a fascination for how data can transform businesses and improve decision-making processes.</p>
+                
+                <p>What sets me apart is my unique combination of technical skills and creative thinking. I approach problems with both analytical rigor and innovative perspectives, allowing me to develop solutions that are not only effective but also elegant and user-friendly.</p>
+                
+                <p>Beyond coding and algorithms, I'm deeply interested in the ethical implications of AI and actively participate in discussions about responsible AI development. My projects often reflect this balance between technological advancement and social responsibility.</p>
+                
+                <p>When I'm not working on models or analyzing data, you can find me exploring new technologies in generative AI, contributing to open-source projects, or mentoring aspiring data scientists. I believe in continuous learning and regularly update my skills through courses and hands-on projects.</p>
+                
+                <p>My goal is to leverage AI to create meaningful impact, whether it's through optimizing business processes, developing innovative applications, or contributing to research that pushes the boundaries of what's possible with machine learning.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="card">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3 class="card-title">Dr. D. Y. Patil Institute of Technology</h3>
+                        <p>Bachelor of Engineering in Artificial Intelligence & Data Science</p>
+                        <p>2021 - 2025</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="card-title">J C high School and Junior College, Karanja</h3>
+                        <p>Higher Secondary Education (12th Grade)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Skills</h2>
+            <div class="card">
+                <div class="skills-container">
+                    <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                    <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
+                    <span class="skill-tag"><i class="fas fa-chart-line"></i> Data Science</span>
+                    <span class="skill-tag"><i class="fab fa-java"></i> Java</span>
+                    <span class="skill-tag"><i class="fas fa-server"></i> Database</span>
+                    <span class="skill-tag"><i class="fas fa-brain"></i> Machine Learning</span>
+                    <span class="skill-tag"><i class="fas fa-robot"></i> AI</span>
+                    <span class="skill-tag"><i class="fas fa-calculator"></i> Statistical Modeling</span>
+                    <span class="skill-tag"><i class="fas fa-project-diagram"></i> Deep Learning</span>
+                    <span class="skill-tag"><i class="fas fa-cloud"></i> Cloud Computing</span>
+                    <span class="skill-tag"><i class="fas fa-code"></i> Natural Language Processing</span>
+                    <span class="skill-tag"><i class="fas fa-eye"></i> Computer Vision</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="project-category">
+                <h3 class="project-category-title">Major Projects</h3>
+                <div class="project-grid">
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Financial Statement Review" class="project-img">
+                        <div class="project-content">
+                            <h3 class="card-title">Financial Statement Review</h3>
+                            <p>Developed an AI-powered system to automate financial statement analysis, reducing manual review time by 70%. The system performs mathematical accuracy checks, year-over-year comparisons, and generates automated reports.</p>
+                            <p><strong>Team Size:</strong> 5</p>
+                            <div class="skills-container" style="margin: 0.5rem 0;">
+                                <span class="skill-tag">AI</span>
+                                <span class="skill-tag">ML</span>
+                                <span class="skill-tag">Data Science</span>
+                                <span class="skill-tag">Gen AI</span>
+                                <span class="skill-tag">Finance</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Learn-07ssg/Financial-Statement-Analysis-Review.git" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Netflix Recommendation" class="project-img">
+                        <div class="project-content">
+                            <h3 class="card-title">Netflix Recommendation System</h3>
+                            <p>Built a content-based recommendation engine that analyzes user viewing patterns and suggests personalized content. Implemented collaborative filtering techniques to improve recommendation accuracy by 35% compared to baseline models.</p>
+                            <div class="skills-container" style="margin: 0.5rem 0;">
+                                <span class="skill-tag">Machine Learning</span>
+                                <span class="skill-tag">Recommendation Systems</span>
+                                <span class="skill-tag">Python</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Spam Detection" class="project-img">
+                        <div class="project-content">
+                            <h3 class="card-title">Spam Detection System</h3>
+                            <p>Created a machine learning model to classify messages as spam or ham with 98% accuracy. Implemented natural language processing techniques including TF-IDF and word embeddings, and deployed as a web service.</p>
+                            <p><strong>Mentor:</strong> Vanita Kshirsagar | <strong>Team Size:</strong> 2</p>
+                            <div class="skills-container" style="margin: 0.5rem 0;">
+                                <span class="skill-tag">Data Science</span>
+                                <span class="skill-tag">Machine Learning</span>
+                                <span class="skill-tag">NLP</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Learn-07ssg/Mini-Project.git" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1574717024453-3545edf4f01a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Text to Video Generation" class="project-img">
+                        <div class="project-content">
+                            <h3 class="card-title">Text to Video Generation</h3>
+                            <p>Developed an innovative system that converts textual descriptions into short video sequences using generative AI models. The project combines natural language understanding with computer vision to create coherent video outputs from text prompts.</p>
+                            <div class="skills-container" style="margin: 0.5rem 0;">
+                                <span class="skill-tag">Generative AI</span>
+                                <span class="skill-tag">Deep Learning</span>
+                                <span class="skill-tag">NLP</span>
+                                <span class="skill-tag">Computer Vision</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3 class="project-category-title">Mini Projects</h3>
+                <div class="project-grid">
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Banking System using Java" class="project-img">
+                        <div class="project-content">
+                            <h3 class="card-title">Banking System using Java</h3>
+                            <p>A Java application simulating basic banking operations like account creation, deposits, withdrawals, and balance inquiries. Implemented OOP principles for clean, maintainable code structure.</p>
+                            <div class="skills-container" style="margin: 0.5rem 0;">
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">OOP</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Learn-07ssg/Banking-System-using-java.git" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card project-card">
+                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80" alt="Titanic Survival Prediction" class="project-img">
+                        <div class="project-content">
+                            <h3 class="card-title">Titanic Survival Prediction</h3>
+                            <p>A data science project predicting survival on the Titanic using Python and various machine learning techniques. Explored feature engineering and model selection to achieve 82% accuracy.</p>
+                            <div class="skills-container" style="margin: 0.5rem 0;">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Data Science</span>
+                                <span class="skill-tag">Machine Learning</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Learn-07ssg/Data-Science.git" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> View Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="internships">
+            <h2 class="section-title">Internships</h2>
+            <div class="card">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3 class="card-title">next24tech AICTE | Consultancy</h3>
+                        <p><strong>Position:</strong> AI/ML Intern</p>
+                        <p>Worked on developing machine learning models for business applications. Gained hands-on experience with real-world datasets and production deployment pipelines. Contributed to optimizing model performance and developing automated testing frameworks.</p>
+                        <div class="skills-container" style="margin: 0.5rem 0;">
+                            <span class="skill-tag">AI</span>
+                            <span class="skill-tag">ML</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <h2 class="section-title">Achievements & Interests</h2>
+            <div class="card">
+                <h3 class="card-title">Certifications</h3>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li class="icon-with-text">
+                        <i class="fas fa-certificate"></i>
+                        <span>Python Certification (Advanced)</span>
+                    </li>
+                    <li class="icon-with-text">
+                        <i class="fas fa-certificate"></i>
+                        <span>Introduction to Machine Learning</span>
+                    </li>
+                </ul>
+                
+                <h3 class="card-title">Seminars & Workshops</h3>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li class="icon-with-text">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>AI/ML for Geo Data Analysis - Indian Space Research Organization</span>
+                    </li>
+                </ul>
+                
+                <h3 class="card-title">Blogs</h3>
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="My Journey into the World of AI" class="blog-img">
+                    <div class="blog-content">
+                        <h4>My Journey into the World of AI</h4>
+                        <p>A personal reflection on discovering artificial intelligence and how it transformed my perspective on technology and problem-solving.</p>
+                        <a href="https://mysilentsecretlistening.blogspot.com/2025/04/my-journey-into-world-of-ai-mind.html" target="_blank" class="blog-link">Read on my blog →</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Embracing Solitude" class="blog-img">
+                    <div class="blog-content">
+                        <h4>Embracing Solitude: Finding Happiness in Being Alone</h4>
+                        <p>Exploring the power of solitude and how it can lead to self-discovery and personal growth in our hyper-connected world.</p>
+                        <a href="https://mysilentsecretlistening.blogspot.com/2023/08/embracing-solitude-finding-happiness-in.html" target="_blank" class="blog-link">Read on my blog →</a>
+                    </div>
+                </div>
+                
+                <h3 class="card-title">Hobbies</h3>
+                <div class="skills-container">
+                    <span class="skill-tag"><i class="fas fa-dance"></i> Dancing</span>
+                    <span class="skill-tag"><i class="fas fa-book"></i> Reading</span>
+                    <span class="skill-tag"><i class="fas fa-lightbulb"></i> Learning new things</span>
+                    <span class="skill-tag"><i class="fas fa-pen-fancy"></i> Poetry (free style)</span>
+                    <span class="skill-tag"><i class="fas fa-blog"></i> Blog Writing</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="card">
+                <h3 class="card-title">Get in Touch</h3>
+                <div class="contact-info" style="justify-content: flex-start; margin-bottom: 1.5rem;">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:gundechasaniya07@gmail.com">gundechasaniya07@gmail.com</a>
+                    </div>
+                </div>
+                
+                <h3 class="card-title">Send Me a Message</h3>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2024 Saniya Sachin Gundecha. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/saniya-gundecha-421012229" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Learn-07ssg" target="_blank" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // Change active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Simple form handling (would need backend integration for actual functionality)
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
